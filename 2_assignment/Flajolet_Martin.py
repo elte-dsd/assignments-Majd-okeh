@@ -17,7 +17,7 @@ class FaljoletMartin:
         self.phai = 0.77351
 
     def _add(self, key):
-        key_hash = mmh3.hash(key)
+        key_hash = mmh3.hash(str(key))
         least_sig_bit_index = get_least_significant_bit_index(key_hash)
         self.bit_map[least_sig_bit_index] = 1
         self.largest_index_in_bit_map = max(least_sig_bit_index, self.largest_index_in_bit_map)
@@ -30,8 +30,10 @@ class FaljoletMartin:
 
 
 '''test'''
-stream = 'AABBAABBAACAC'
-stream = '1123142'
+stream = [1,1,2,3,1,4,2]
+stream = ['A','A','B','B','A','A','B','B','A','A','A']
+
+
 x= FaljoletMartin(stream)
 
 print(x.get_cardinality())
